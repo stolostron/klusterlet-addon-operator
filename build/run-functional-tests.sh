@@ -147,7 +147,7 @@ run_test() {
   #Load image into cluster
   kind load docker-image $DOCKER_IMAGE --name=test-cluster
 
-  if [[ "$CONFIG_FILE" == "kubernetes-v1.11.10.yaml" || "$CONFIG_FILE" == "kubernetes-v1.13.12.yaml" ]]; then
+  if [[ $CONFIG_FILE == "build/kind-config/kubernetes-v1.11.10.yaml" || $CONFIG_FILE == "build/kind-config/kubernetes-v1.13.12.yaml" ]]; then
     #Apply all crds
     for file in `ls deploy/crds/agent.open-cluster-management.io_*_crd.yaml`; do kubectl apply -f $file; done
 
