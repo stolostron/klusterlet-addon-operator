@@ -147,11 +147,20 @@ run_test() {
   #Load image into cluster
   kind load docker-image $DOCKER_IMAGE --name=test-cluster
 
-  #Apply all crds
-  for file in `ls deploy/crds/agent.open-cluster-management.io_*_crd.yaml`; do kubectl apply -f $file; done
+  if [[ "$CONFIG_FILE" == "kubernetes-v1.11.10.yaml" || "$CONFIG_FILE" == "kubernetes-v1.13.12.yaml" ]]; then
+    #Apply all crds
+    for file in `ls deploy/crds/agent.open-cluster-management.io_*_crd.yaml`; do kubectl apply -f $file; done
 
-  if [[ "$SELF_IMPORT" == true ]]; then 
-    kubectl apply -f deploy/crds/operator.open-cluster-management.io_multiclusterhub.crd.yaml 
+    if [[ "$SELF_IMPORT" == true ]]; then 
+      kubectl apply -f deploy/crds/operator.open-cluster-management.io_multiclusterhub.crd.yaml 
+    fi
+  else
+    #Apply all crds
+    for file in `ls deploy/crds-v1/agent.open-cluster-management.io_*_crd.yaml`; do kubectl apply -f $file; done
+
+    if [[ "$SELF_IMPORT" == true ]]; then 
+      kubectl apply -f deploy/crds/operator.open-cluster-management.io_multiclusterhub.crd.yaml 
+    fi
   fi
 
   #Try to apply the securitycontextconstraints
