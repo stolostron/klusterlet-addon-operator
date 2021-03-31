@@ -163,7 +163,7 @@ run_test() {
     for file in `ls deploy/crds-v1/agent.open-cluster-management.io_*_crd.yaml`; do kubectl apply -f $file; done
 
     if [[ "$SELF_IMPORT" == true ]]; then 
-      kubectl apply -f deploy/crds/operator.open-cluster-management.io_multiclusterhub.crd.yaml 
+      kubectl apply -f deploy/crds-v1/operator.open-cluster-management.io_multiclusterhub.crd.yaml 
     fi
   fi
 
