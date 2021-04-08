@@ -62,7 +62,6 @@ spec:
                     description: ObjectDefinition defines required fields for the
                       object
                     type: object
-                    x-kubernetes-preserve-unknown-fields: true
                 required:
                 - complianceType
                 type: object
