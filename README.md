@@ -87,3 +87,4 @@ To run the test call depending on the kube version the test must run on:
 ## Add a component into the test
 
 To add a new component into the test, the klusterlet-operator CRD must be added in the [deploy/crds](deploy/crds) directory and a corresponding CR must be added in the [deploy/crs](deploy/crd) directory.
+
