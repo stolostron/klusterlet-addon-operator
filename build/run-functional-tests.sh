@@ -218,7 +218,10 @@ run_test() {
   done
   # dump log
   if [ $_installed_failed != 0 ]; then
-    KUBECONFIG=kind_kubeconfig.yaml kubectl logs  -n open-cluster-management `KUBECONFIG=kind_kubeconfig.yaml kubectl get po -n open-cluster-management -oname | grep klusterlet-addon-operator` > failed.log
+    echo "listing all pods"
+    kubectl get po -A
+    echo "logs of addon-operator"
+    kubectl logs  -n open-cluster-management `kubectl get po -n open-cluster-management -oname | grep klusterlet-addon-operator` > failed.log
   fi
 
   #Delete cluster
