@@ -143,6 +143,9 @@ run_test() {
 
   # Create cluster
   kind create cluster --name=test-cluster --config $CONFIG_FILE
+  # Free cache
+  sudo sync
+  sudo echo 3 > /proc/sys/vm/drop_caches 
 
   #export context to kubeconfig
   # export KUBECONFIG=$(mktemp /tmp/kubeconfigXXXX)
