@@ -191,6 +191,7 @@ run_test() {
   #Create a generic klusterlet-bootstrap
   kubectl create secret generic klusterlet-bootstrap -n klusterlet --from-file=kubeconfig=$tmpKUBECONFIG
   _installed_failed=0
+  _timeout=0
   for dir in overlays/test/* ; do
     echo "Executing test "$dir
     kubectl apply -k $dir
@@ -217,7 +218,7 @@ run_test() {
     fi
   done
   # dump log
-  if [ $_installed_failed != 0 ]; then
+  if [ $_timeout != 0 ] || [ $_installed_failed != 0 ]; then
     echo "listing all pods"
     kubectl get po -A
     echo "logs of addon-operator"
