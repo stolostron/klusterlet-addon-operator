@@ -216,9 +216,13 @@ run_test() {
       break
     fi
   done
+  # dump log
+  if [ $_installed_failed != 0 ]; then
+    KUBECONFIG=kind_kubeconfig.yaml kubectl logs  -n open-cluster-management `KUBECONFIG=kind_kubeconfig.yaml kubectl get po -n open-cluster-management -oname | grep klusterlet-addon-operator` > failed.log
+  fi
 
   #Delete cluster
-	kind delete cluster --name=test-cluster
+  kind delete cluster --name=test-cluster
   echo "====================== END of config $CONFIG_FILE ======================"
   if [ $_timeout != 0 ]; then
     return 1
@@ -253,6 +257,7 @@ done
 
 if [ $FAILED == 1 ]; then
   echo "At least, one of the KinD configuration failed"
+  
 fi
 
 exit $FAILED
