@@ -261,6 +261,12 @@ for kube_config in `ls $KIND_CONFIGS/*`; do
   if [[ "$kube_config" == *_self-import.yaml ]]; then 
     SELF_IMPORT=true
   fi
+  echo "cleaning cache"
+  sync
+  echo 3 > /proc/sys/vm/drop_caches
+  echo "after cache clean"
+  free -mh
+  
   run_test $kube_config $SELF_IMPORT
   if [ $? != 0 ]; then
     FAILED=1
