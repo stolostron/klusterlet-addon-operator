@@ -190,7 +190,7 @@ run_test() {
 
   #Create a generic klusterlet-bootstrap
   kubectl create secret generic klusterlet-bootstrap -n klusterlet --from-file=kubeconfig=$tmpKUBECONFIG
-  
+  _installed_failed=0
   for dir in overlays/test/* ; do
     echo "Executing test "$dir
     kubectl apply -k $dir
