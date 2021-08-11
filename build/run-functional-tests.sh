@@ -221,6 +221,7 @@ run_test() {
   if [ $_timeout != 0 ] || [ $_installed_failed != 0 ]; then
     echo "listing all pods"
     kubectl get po -A
+    kubectl describe po -A
     echo "logs of addon-operator"
     kubectl logs  -n open-cluster-management `kubectl get po -n open-cluster-management -oname | grep klusterlet-addon-operator` > failed.log
   fi
