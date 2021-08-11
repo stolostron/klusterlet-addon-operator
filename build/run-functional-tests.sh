@@ -252,6 +252,9 @@ if [ $? != 0 ]; then
   exit 1
 fi
 
+echo "memory before test"
+free -mh
+
 FAILED=0
 SELF_IMPORT=false
 for kube_config in `ls $KIND_CONFIGS/*`; do
