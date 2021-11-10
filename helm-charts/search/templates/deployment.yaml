@@ -81,8 +81,6 @@ spec:
         {{- end }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
-        livenessProbe: null
-        readinessProbe: null
         volumeMounts:
         - name: hub-config
           mountPath: /hubconfig
