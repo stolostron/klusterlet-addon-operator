@@ -44,6 +44,18 @@ spec:
       - name: collector
         image: "{{ .Values.global.imageOverrides.search_collector }}"
         imagePullPolicy: {{ .Values.global.imagePullPolicy }}
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8000
+          failureThreshold: 3
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8000
+          failureThreshold: 3
+          periodSeconds: 10
         env:
         - name: CLUSTER_NAME
           value: "{{ .Values.clusterName }}"
