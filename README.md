@@ -55,7 +55,7 @@ make operator:run
 
 To manually create a instance of the component you will need to create the component CR the spec of the CR will be use as the value override for the helm chart associated with the .the `deploy/crd` folder contain example CR for the components
 
-The [klusterlet-addon-controller](https://github.com/open-cluster-management/klusterlet-addon-controller) project automaically create and manage the update of the CR for the components in the klusterlet component operator. See Klusterlet Operator's README for how to run the Klusterlet Operator
+The [klusterlet-addon-controller](https://github.com/stolostron/klusterlet-addon-controller) project automaically create and manage the update of the CR for the components in the klusterlet component operator. See Klusterlet Operator's README for how to run the Klusterlet Operator
 
 ## Build and publish a personal build to scratch artifactory
 
@@ -71,7 +71,7 @@ The [klusterlet-addon-controller](https://github.com/open-cluster-management/klu
 
 ## Run functional test
 
-The implemented funcitonal tests deploy the klusterlet-component-operator in KinD v0.7.0.
+The implemented functional tests deploy the klusterlet-component-operator in KinD v0.7.0.
 
 The kind configuration file are located in the [build/kind-config](build/kind-config).
 
