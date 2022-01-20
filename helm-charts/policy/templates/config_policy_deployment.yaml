@@ -38,7 +38,7 @@ spec:
         heritage: {{ .Release.Service }}
         chart: {{ template "policy.chart" . }}
     spec:
-      serviceAccountName: {{ template "policy.fullname" . }}
+      serviceAccountName: {{ template "policy.fullname" . }}-config-policy
       containers:
       - name: config-policy-controller
         image: "{{ .Values.global.imageOverrides.config_policy_controller }}"
