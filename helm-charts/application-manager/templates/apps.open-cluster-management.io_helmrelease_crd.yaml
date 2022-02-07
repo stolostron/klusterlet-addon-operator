@@ -5,6 +5,8 @@
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
+  annotations:
+    helm.sh/resource-policy: keep
   name: helmreleases.apps.open-cluster-management.io
 spec:
   group: apps.open-cluster-management.io
@@ -325,6 +327,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.4.0
+    helm.sh/resource-policy: keep
   creationTimestamp: null
   name: helmreleases.apps.open-cluster-management.io
 spec:

@@ -93,25 +93,6 @@ wait_installed() {
 }
 
 check_ocp_install(){
-    echo "checking route installation: kubectl get route -n klusterlet"
-    kubectl get route -l component=work-manager -n klusterlet
-    _not_installed_route=1
-    if [ $(kubectl get route -l component=work-manager -n klusterlet | wc -l)  -gt 1 ]; then
-      echo "route installed correctly"
-      _not_installed_route=0
-    fi
-    _is_installed_loadbalancer=1
-    kubectl get svc -l component=work-manager -n klusterlet -owide
-    kubectl get svc -l component=work-manager -n klusterlet -ocustom-columns='type:.spec.type' | grep -i LoadBalancer || _is_installed_loadbalancer=0
-
-    if [ $_not_installed_route != 0 ]; then
-      echo 'route not installed'
-      return 1
-    fi
-    if [ $_is_installed_loadbalancer != 0 ]; then
-      echo 'should not use loadbalancer for ocp install'
-      return 1
-    fi
     return 0
 }
 
