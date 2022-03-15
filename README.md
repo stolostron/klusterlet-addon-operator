@@ -1,5 +1,7 @@
 [comment]: # ( Copyright Contributors to the Open Cluster Management project )
 
+# **Note: this repo will be deprecated in 2.5 and deleted in 2.6.**
+
 # klusterlet addon operator
 
 Klusterlet addon operator supports deployment of add-ons on ManagedCluster for ACM.
