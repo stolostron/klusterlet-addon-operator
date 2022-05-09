@@ -1,6 +1,6 @@
 # Copyright Contributors to the Open Cluster Management project
 
-FROM quay.io/operator-framework/helm-operator:v1.18.1
+FROM quay.io/operator-framework/helm-operator:v1.19.1
 
 USER root
 RUN microdnf update -y
