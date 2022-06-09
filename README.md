@@ -1,6 +1,6 @@
 [comment]: # ( Copyright Contributors to the Open Cluster Management project )
 
-# **Note: this repo will be deprecated in 2.5 and deleted in 2.6.**
+# **Note: this repo will be deprecated in 2.5 and stop in used in 2.6.**
 
 # klusterlet addon operator
 
